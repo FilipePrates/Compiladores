@@ -1,0 +1,6 @@
+a = 2; /* Um comentario */ // outro */
+/* Texto
++ / * a
+*/
+
+/* tex + / * a */
