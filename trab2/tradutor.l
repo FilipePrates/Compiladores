@@ -9,25 +9,27 @@
 using namespace std;
 int token;
 string lexema;
-enum TOKEN { ID = 256, NUM };
+enum TOKEN { ID = 256, NUM, STRING };
 
 %}
 
-WS	[ \n\t]
+WS	    [ \n\t]
 DIGITO	[0-9]
 LETRA	[A-Za-z_]
 
-NUM	{DIGITO}+
+NUM	{DIGITO}+("."{DIGITO}+)?
 ID	{LETRA}({LETRA}|{DIGITO})*
+
+STRING \"[^\"\n]*\"
 
 %%
 
 {WS}  		{ }
-{NUM} 		{ return NUM; }
-{ID}		{ return ID; }
+{STRING} 	{ lexema = yytext; return STRING; }
+{NUM} 		{ lexema = yytext; return NUM; }
+{ID}		{ lexema = yytext; return ID; }
 
-.		{ return yytext[0]; }
-
+.		    { lexema = yytext; return yytext[0]; }
 %%
 void S();
 void A();
@@ -56,7 +58,6 @@ void A() {
   cout << temp;
   casa( '=' );
   E();
-  cout << "=";;
 }
 
 void E() {
@@ -84,6 +85,7 @@ void T_linha() {
 }
 
 void F() {
+  cout << "F:" << token;
   switch( token ) {
     case ID : {
       string temp = lexema;
@@ -93,6 +95,10 @@ void F() {
     case NUM : {
       string temp = lexema;
       casa( NUM ); cout << temp; }
+      break;
+    case STRING : {
+      string temp = lexema;
+      casa( STRING ); cout << temp; }
       break;
     case '(': 
       casa( '(' ); E(); casa( ')' ); break;
@@ -105,5 +111,6 @@ int main() {
     cout << "=== Tradutor ===" << endl;
     token = yylex();
     A();
+    if (token == 0) cout << "Ok" << endl;
     return 0;
 }
