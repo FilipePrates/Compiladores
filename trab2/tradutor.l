@@ -20,7 +20,7 @@ LETRA	[A-Za-z_]
 PRINT [Pp][Rr][Ii][Nn][Tt]
 NUM	{DIGITO}+("."{DIGITO}+)?
 ID	{LETRA}({LETRA}|{DIGITO})*
-STRING \"[^\"\n]*\"
+STRING \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
 
 %%
 
