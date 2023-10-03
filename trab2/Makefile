@@ -1,12 +1,12 @@
-all: saida entrada.txt
-	./saida < entrada.txt
+all: geradorFI entrada.txt
+	./geradorFI < entrada.txt
 
 lex.yy.c: tradutor.l
 	lex tradutor.l
 
-saida: lex.yy.c
-	g++ -std=c++17 lex.yy.c -o saida -ll
-		
+geradorFI: lex.yy.c
+	g++ -std=c++17 lex.yy.c -o geradorFI -ll
+
 clean:
-	rm saida lex.yy.c
+	rm geradorFI lex.yy.c
 	

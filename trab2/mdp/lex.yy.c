@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 7
-#define YY_END_OF_BUFFER 8
+#define YY_NUM_RULES 8
+#define YY_END_OF_BUFFER 9
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,11 +360,10 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[22] =
+static const flex_int16_t yy_accept[20] =
     {   0,
-        0,    0,    8,    6,    1,    1,    6,    3,    5,    5,
-        0,    2,    0,    3,    5,    5,    3,    5,    5,    4,
-        0
+        0,    0,    9,    7,    1,    3,    2,    7,    4,    6,
+        0,    0,    0,    0,    4,    6,    5,    4,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -372,17 +371,17 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    2,    1,    4,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    5,    1,    6,    6,    6,
-        6,    6,    6,    6,    6,    6,    6,    1,    1,    1,
-        1,    1,    1,    1,    7,    7,    7,    7,    7,    7,
-        7,    7,    8,    7,    7,    7,    7,    9,    7,   10,
-        7,   11,    7,   12,    7,    7,    7,    7,    7,    7,
-        1,    1,    1,    1,    7,    1,    7,    7,    7,    7,
+        1,    4,    1,    5,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    6,    1,    7,    7,    7,
+        7,    7,    7,    7,    7,    7,    7,    1,    1,    1,
+        1,    1,    1,    1,    8,    8,    8,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+        1,    9,    1,    1,    8,    1,    8,    8,    8,    8,
 
-        7,    7,    7,    7,    8,    7,    7,    7,    7,    9,
-        7,   10,    7,   11,    7,   12,    7,    7,    7,    7,
-        7,    7,    1,    1,    1,    1,    1,    1,    1,    1,
+        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+        8,    8,    8,    8,    8,    8,    8,    8,    8,    8,
+        8,    8,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -399,40 +398,37 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[13] =
+static const YY_CHAR yy_meta[10] =
     {   0,
-        1,    1,    2,    1,    1,    3,    3,    3,    3,    3,
-        3,    3
+        1,    1,    2,    1,    1,    1,    1,    1,    1
     } ;
 
-static const flex_int16_t yy_base[24] =
+static const flex_int16_t yy_base[21] =
     {   0,
-        0,    0,   26,   27,   27,   27,   21,    8,    0,   13,
-       19,   27,   16,    0,    0,   13,   14,   10,    6,    0,
-       27,   14,   13
+        0,    0,   22,   29,   29,   29,   29,    5,    9,   10,
+       14,   16,   19,   13,    0,    0,    8,    5,   29,   10
     } ;
 
-static const flex_int16_t yy_def[24] =
+static const flex_int16_t yy_def[21] =
     {   0,
-       21,    1,   21,   21,   21,   21,   22,   21,   23,   23,
-       22,   21,   21,    8,   23,   23,   21,   23,   23,   23,
-        0,   21,   21
+       19,    1,   19,   19,   19,   19,   19,   20,   19,   19,
+       20,   19,   19,   19,    9,   10,   19,   19,    0,   19
     } ;
 
-static const flex_int16_t yy_nxt[40] =
+static const flex_int16_t yy_nxt[39] =
     {   0,
-        4,    5,    6,    7,    4,    8,    9,    9,    9,   10,
-        9,    9,   13,   14,   11,   15,   11,   20,   19,   17,
-       18,   17,   12,   16,   12,   21,    3,   21,   21,   21,
-       21,   21,   21,   21,   21,   21,   21,   21,   21
+        4,    5,    6,    7,    8,    4,    9,   10,    4,   12,
+       11,   18,   11,   13,   14,   15,   16,   16,   17,   18,
+       11,   19,   13,   11,   19,   19,   19,   11,    3,   19,
+       19,   19,   19,   19,   19,   19,   19,   19
     } ;
 
-static const flex_int16_t yy_chk[40] =
+static const flex_int16_t yy_chk[39] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    8,    8,   22,   23,   22,   19,   18,   17,
-       16,   13,   11,   10,    7,    3,   21,   21,   21,   21,
-       21,   21,   21,   21,   21,   21,   21,   21,   21
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    8,
+       20,   18,   17,    8,    9,    9,   10,   10,   11,   14,
+       12,    3,   11,   13,    0,    0,    0,   13,   19,   19,
+       19,   19,   19,   19,   19,   19,   19,   19
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -449,8 +445,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "tradutor.l"
-#line 2 "tradutor.l"
+#line 1 "mdp.l"
+#line 2 "mdp.l"
 #include <stdlib.h>
 #include <math.h>
 #include <map>
@@ -459,12 +455,33 @@ char *yytext;
 #include <iostream>
 
 using namespace std;
-int token;
-string lexema;
-enum TOKEN { ID = 256, NUM, STRING, PRINT };
 
-#line 467 "lex.yy.c"
-#line 468 "lex.yy.c"
+struct Valor {
+    bool isNumber;
+    double valNum;
+    string valStr;
+    
+    Valor(): isNumber(true), valNum(0), valStr("") {}
+    Valor(double valNum): isNumber(true), valNum(valNum), valStr("") {}
+    Valor(string valStr): isNumber(false), valNum(0), valStr(valStr) {}
+};
+
+enum TOKEN { CDOUBLE = 256, CSTR, ID };
+
+int linha = 1;
+int coluna = 1;
+string lexema;
+
+typedef void (*Funcao)();
+
+vector<Valor> pilha;
+map<string,Valor> var;
+
+int token(int);
+void erro(string msg);
+void remove_escape( string& );
+#line 484 "lex.yy.c"
+#line 485 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -681,10 +698,10 @@ YY_DECL
 		}
 
 	{
-#line 25 "tradutor.l"
+#line 43 "mdp.l"
 
 
-#line 688 "lex.yy.c"
+#line 705 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -711,13 +728,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 22 )
+				if ( yy_current_state >= 20 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 27 );
+		while ( yy_base[yy_current_state] != 29 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -742,42 +759,47 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
-/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 27 "tradutor.l"
-{ }
+#line 45 "mdp.l"
+{ coluna += 4; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 28 "tradutor.l"
-{ lexema = yytext; return STRING; }
+#line 46 "mdp.l"
+{ coluna++; }
 	YY_BREAK
 case 3:
+/* rule 3 can match eol */
 YY_RULE_SETUP
-#line 29 "tradutor.l"
-{ lexema = yytext; return NUM; }
+#line 47 "mdp.l"
+{ linha++; coluna = 1; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 30 "tradutor.l"
-{ lexema = yytext; return PRINT; }
+#line 49 "mdp.l"
+{ return token( CDOUBLE ); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 31 "tradutor.l"
-{ lexema = yytext; return ID; }
+#line 50 "mdp.l"
+{ return token( CSTR ); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 32 "tradutor.l"
-{ lexema = yytext; return yytext[0]; }
+#line 53 "mdp.l"
+{ return token( ID ); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "tradutor.l"
+#line 55 "mdp.l"
+{ return token( *yytext ); }
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 57 "mdp.l"
 ECHO;
 	YY_BREAK
-#line 781 "lex.yy.c"
+#line 803 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1074,7 +1096,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 22 )
+			if ( yy_current_state >= 20 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1102,11 +1124,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 22 )
+		if ( yy_current_state >= 20 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 21);
+	yy_is_jam = (yy_current_state == 19);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1782,103 +1804,208 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 33 "tradutor.l"
+#line 57 "mdp.l"
 
-void S();
-void S_linha();
-void A();
-void E();
-void E_linha();
-void T();
-void T_linha();
-void F();
-void casa(int esperado);
 
-void casa(int esperado) {
-	if (token == esperado){
-        token = yylex();
-    } else {
-        cout << endl << "Erro no 'casa', era pra ser: " << to_string(esperado) << " , mas recebemos:" << token << endl;
-        exit(1);
+int token( int tk ) {  
+  lexema = yytext; 
+  if( tk == CSTR )
+    remove_escape( lexema );
+
+  coluna += strlen( yytext ); 
+
+  return tk;
+}
+
+void replace_all( string& subject, const  string& search, const  string& replace ) {
+    size_t pos = 0;
+    while ((pos = subject.find(search, pos)) != string::npos) {
+         subject.replace(pos, search.length(), replace);
+         pos += replace.length();
     }
 }
 
-void S(){
-  A();
-  cout << " ";
-  S_linha();
+void remove_escape( string& st ) {
+    st = st.substr( 1, lexema.size() - 2 );
+    replace_all( st, "\"\"", "\"" );
+    replace_all( st, "\\\"", "\"" );
+    replace_all( st, "\\\\", "\\" );
 }
 
-void S_linha(){
-  if( token == ';'){
-    casa(';');
-    switch( token ) {
-      case PRINT : casa( PRINT ); E(); cout << " print #"; break;
-      default : A(); S_linha(); break;
-    }
-  }
+inline void push( Valor valor ) {
+  pilha.push_back( valor );
 }
 
-
-void A() {
-  string temp = lexema; 
-  casa( ID );
-  cout << temp;
-  casa( '=' );
-  E();
-  cout << " = ^";
+inline void push( double valor ) {
+  push( Valor( valor ) );
 }
 
-void E() {
-  T();
-  E_linha();
+inline void push( string valor ) {
+  push( Valor( valor ) );
 }
 
-void E_linha() {
-  switch( token ) {
-    case '+' : casa( '+' ); T(); cout << " +"; E_linha(); break;
-    case '-' : casa( '-' ); T(); cout << " -"; E_linha(); break;
-  }
+inline Valor pop() {
+  if( pilha.size() <= 0 )
+    erro( "Tentou desempilhar mas a pilha está vazia" );
+  
+  Valor temp = pilha.back();
+  pilha.pop_back();
+  
+  return temp;
 }
 
-void T() {
-  F();
-  T_linha();
+inline double pop_number() {
+  Valor temp = pop();
+  
+  if( !temp.isNumber )
+    erro( "Esperado um operando numérico, encontrado \"" + temp.valStr + "\"" );
+    
+  return temp.valNum;
 }
 
-void T_linha() {
-  switch( token ) {
-    case '*' : casa( '*' ); F(); cout << " *"; T_linha(); break;
-    case '/' : casa( '/' ); F(); cout << " /"; T_linha(); break;
-  }
+inline string pop_string() {
+  Valor temp = pop();
+  
+  if( temp.isNumber )
+    erro( "Esperado um operando string, encontrado " + to_string( temp.valNum ) );
+    
+  return temp.valStr;
 }
 
-void F() {
-  switch( token ) {
-    case ID : {
-      string temp = lexema;
-      casa( ID );
-      cout << " " << temp << " @";  } 
-      break;
-    case NUM : {
-      string temp = lexema;
-      casa( NUM ); cout << temp; }
-      break;
-    case STRING : {
-      string temp = lexema;
-      casa( STRING ); cout << " " << temp; }
-      break;
-    case '(': 
-      casa( '(' ); E(); casa( ')' ); break;
-    default:
-      cout << "erro" << endl; exit(1);
-  }
+inline ostream& operator << ( ostream& o, const Valor& valor ) {
+  if( valor.isNumber )
+      o << "Num: " << valor.valNum;
+    else
+      o << "Str: " << valor.valStr;
+      
+  return o;
 }
+
+inline ostream& operator << ( ostream& o, const map<string,Valor>& v ) {
+  for( auto x : v ) 
+    cout << "|" << x.first << " ==> " << x.second << "|" << endl;
+  return o;
+}
+
+inline ostream& operator << ( ostream& o, const vector<Valor>& v ) {
+  for( unsigned int i = 0; i < 10 && i < v.size(); i++ ) 
+    cout << "|" << v[i] << "|" << endl;
+  return o;
+}
+
+inline void erro( string msg ) {
+  cout << "=== Erro: " << msg << " ===" <<endl;
+  cout << "=== Vars ===" << endl << var;
+  cout << "=== Pilha ===" << endl << pilha;
+  exit( 0 ); 
+}
+
+double fatorial( int n ) {
+  if( n < 0 ) 
+    erro( "Fatorial somente está definido para n >= 0" );
+  else if( n == 0 )
+    return 1;
+  else
+    return n * fatorial( n - 1 );
+}
+
+map<string, Funcao> func = {
+  { "max", []() { double b = pop_number();
+                  double a = pop_number();
+                  push( a > b ? a : b ); } },
+  { "power", []() { double b = pop_number();
+                    double a = pop_number();
+                    push( pow( a, b ) ); } },
+  { "print", []() { cout << pop() << endl; } }, 
+  { "fat", []() { push( fatorial( pop_number() ) ); } }, 
+  { "dtos", []() { push( to_string( pop_number() ) ); } }
+};
 
 int main() {
-    token = yylex();
-    S();
-    if (token == 0) cout << endl << "Ok" << endl;
+    int token = yylex();
+    auto p = func.begin();
+    string nome;
+    double op1, op2;
+    Valor val;
+    
+    cout << "=== Console ===" << endl;
+    
+    while( token != 0 ) {
+        switch( token ) {
+            case CDOUBLE:
+                push( stod( lexema ) ); 
+                break;
+                
+            case ID:
+                push( lexema );
+                break;
+                
+            case CSTR:
+                push( lexema );
+                break;
+                
+            case '#': 
+                if( (p = func.find( nome = pop_string() )) == func.end() ) {
+                erro( "Funcao não definida: " + nome );
+                }
+                
+                (p->second)();
+                break;
+                
+            case '@':
+                push( var[pop_string()] );
+                break;
+                
+            case '=':
+                val = pop();
+                var[pop_string()] = val;
+                push( val );
+                break;
+                
+            case '^' :
+              pop();
+            break;    
+                
+            case '+':
+                val = pop();
+                
+                if( val.isNumber ) 
+                push( pop_number() + val.valNum );
+                else  
+                push( pop_string() + val.valStr );
+                
+                break;
+                
+            case '-':
+                op2 = pop_number();
+                op1 = pop_number();
+                
+                push( op1 - op2 ); 
+                break;
+                
+            case '/':
+                op2 = pop_number();
+                op1 = pop_number();
+                
+                push( op1 / op2 ); 
+                break;
+                
+            case '*':
+                op2 = pop_number();
+                op1 = pop_number();
+                
+                push( op1 * op2 ); 
+                break;  
+              
+            default:
+                erro( "Instrução ou operador inválido: " + lexema );
+        }
+        
+        token = yylex();
+    }
+    
+    cout << "=== Vars ===" << endl << var;
+    cout << "=== Pilha ===" << endl << pilha;
+    
     return 0;
 }
-
