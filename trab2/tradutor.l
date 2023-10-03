@@ -39,15 +39,18 @@ void E_linha();
 void T();
 void T_linha();
 void F();
+void P();
+void W();
+
 void casa(int esperado);
 
 void casa(int esperado) {
 	if (token == esperado){
-        token = yylex();
-    } else {
-        cout << endl << "Erro no 'casa', era pra ser: " << to_string(esperado) << " , mas recebemos:" << token << endl;
-        exit(1);
-    }
+      token = yylex();
+  } else {
+      cout << endl << "Erro no 'casa', era pra ser: " << to_string(esperado) << " , mas recebemos :" << token << endl;
+      exit(1);
+  }
 }
 
 void S(){
@@ -59,21 +62,24 @@ void S(){
 void S_linha(){
   if( token == ';'){
     casa(';');
-    switch( token ) {
-      case PRINT : casa( PRINT ); E(); cout << " print #"; break;
-      default : A(); S_linha(); break;
-    }
+  }
+  switch( token ) {
+    case PRINT : casa( PRINT ); E(); cout << " print #"; S_linha(); break;
+    case 0 : return;
+    default : A(); S_linha(); break;
   }
 }
 
 
 void A() {
   string temp = lexema; 
-  casa( ID );
-  cout << temp;
-  casa( '=' );
-  E();
-  cout << " = ^";
+  if( token == ID){
+    casa( ID );
+    cout << temp;
+    casa( '=' );
+    E();
+    cout << " = ^";
+  }
 }
 
 void E() {
@@ -95,12 +101,25 @@ void T() {
 
 void T_linha() {
   switch( token ) {
-    case '*' : casa( '*' ); F(); cout << " *"; T_linha(); break;
-    case '/' : casa( '/' ); F(); cout << " /"; T_linha(); break;
+    case '*' : casa( '*' ); P(); cout << " *"; T_linha(); break;
+    case '/' : casa( '/' ); P(); cout << " /"; T_linha(); break;
+  }
+}
+
+
+void P() {
+  F();
+  W();
+}
+
+void W() {
+  switch( token ) {
+    case '^' : casa( '^' ); P(); cout << " ^"; break;
   }
 }
 
 void F() {
+  // cout << "F: " << token;
   switch( token ) {
     case ID : {
       string temp = lexema;
@@ -109,7 +128,7 @@ void F() {
       break;
     case NUM : {
       string temp = lexema;
-      casa( NUM ); cout << temp; }
+      casa( NUM ); cout << " " << temp; }
       break;
     case STRING : {
       string temp = lexema;
@@ -117,14 +136,15 @@ void F() {
       break;
     case '(': 
       casa( '(' ); E(); casa( ')' ); break;
+   case '-': 
+     casa('-'); cout << " 0"; F(); cout << " -"; break;
     default:
-      cout << "erro" << endl; exit(1);
+      cout << "errou" << endl; exit(1);
   }
 }
 
 int main() {
     token = yylex();
     S();
-    if (token == 0) cout << endl << "Ok" << endl;
     return 0;
 }
