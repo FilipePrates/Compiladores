@@ -42,8 +42,6 @@ void F();
 void P();
 void W();
 
-void casa(int esperado);
-
 void casa(int esperado) {
 	if (token == esperado){
       token = yylex();
@@ -53,33 +51,37 @@ void casa(int esperado) {
   }
 }
 
+void print(string s){
+  cout << s << " ";
+}
+
 void S(){
-  A();
-  cout << " ";
+  // switch( token ) {
+   // case ID : A();  break;
+   // case PRINT : S_linha(); break;
+   // default : return;
+  //}
+  if(token == ID) A();
   S_linha();
 }
 
 void S_linha(){
-  if( token == ';'){
-    casa(';');
-  }
   switch( token ) {
-    case PRINT : casa( PRINT ); E(); cout << " print #"; S_linha(); break;
-    case 0 : return;
-    default : A(); S_linha(); break;
+    case PRINT : casa( PRINT ); E(); print("print #"); S_linha(); break;
+    case ID : A(); S_linha(); break;
   }
 }
 
 
 void A() {
   string temp = lexema; 
-  if( token == ID){
-    casa( ID );
-    cout << temp;
-    casa( '=' );
-    E();
-    cout << " = ^";
-  }
+  casa( ID );
+  print(temp);
+  casa( '=' );
+  E();
+  casa(';');
+  print("=");
+  if(token != 0) print("^");
 }
 
 void E() {
@@ -89,8 +91,8 @@ void E() {
 
 void E_linha() {
   switch( token ) {
-    case '+' : casa( '+' ); T(); cout << " +"; E_linha(); break;
-    case '-' : casa( '-' ); T(); cout << " -"; E_linha(); break;
+    case '+' : casa( '+' ); T(); print("+"); E_linha(); break;
+    case '-' : casa( '-' ); T(); print("-"); E_linha(); break;
   }
 }
 
@@ -101,8 +103,8 @@ void T() {
 
 void T_linha() {
   switch( token ) {
-    case '*' : casa( '*' ); P(); cout << " *"; T_linha(); break;
-    case '/' : casa( '/' ); P(); cout << " /"; T_linha(); break;
+    case '*' : casa( '*' ); P(); print("*"); T_linha(); break;
+    case '/' : casa( '/' ); P(); print("/"); T_linha(); break;
   }
 }
 
@@ -114,7 +116,7 @@ void P() {
 
 void W() {
   switch( token ) {
-    case '^' : casa( '^' ); P(); cout << " ^"; break;
+    case '^' : casa( '^' ); P(); print("^"); break;
   }
 }
 
@@ -124,20 +126,20 @@ void F() {
     case ID : {
       string temp = lexema;
       casa( ID );
-      cout << " " << temp << " @";  } 
+      print(temp);print("@");  } 
       break;
     case NUM : {
       string temp = lexema;
-      casa( NUM ); cout << " " << temp; }
+      casa( NUM ); print(temp); }
       break;
     case STRING : {
       string temp = lexema;
-      casa( STRING ); cout << " " << temp; }
+      casa( STRING ); print(temp); }
       break;
     case '(': 
       casa( '(' ); E(); casa( ')' ); break;
    case '-': 
-     casa('-'); cout << " 0"; F(); cout << " -"; break;
+     casa('-'); print("0"); F(); print("-"); break;
     default:
       cout << "errou" << endl; exit(1);
   }
