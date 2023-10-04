@@ -9,7 +9,7 @@
 using namespace std;
 int token;
 string lexema;
-enum TOKEN { ID = 256, NUM, STRING, PRINT };
+enum TOKEN { ID = 256, NUM, STRING, PRINT, MAX, NEGNUM, POSNUM};
 
 %}
 
@@ -18,6 +18,7 @@ DIGITO	[0-9]
 LETRA	[A-Za-z_]
 
 PRINT [Pp][Rr][Ii][Nn][Tt]
+MAX [Mm][Aa][Xx]
 NUM	{DIGITO}+("."{DIGITO}+)?
 ID	{LETRA}({LETRA}|{DIGITO})*
 STRING \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
@@ -28,6 +29,7 @@ STRING \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
 {STRING} 	{ lexema = yytext; return STRING; }
 {NUM} 		{ lexema = yytext; return NUM; }
 {PRINT}     { lexema = yytext; return PRINT; }
+{MAX}    { lexema = yytext; return MAX; }
 {ID}		{ lexema = yytext; return ID; }
 .		    { lexema = yytext; return yytext[0]; }
 %%
@@ -41,6 +43,7 @@ void T_linha();
 void F();
 void P();
 void W();
+void X();
 
 void casa(int esperado) {
 	if (token == esperado){
@@ -67,7 +70,7 @@ void S(){
 
 void S_linha(){
   switch( token ) {
-    case PRINT : casa( PRINT ); E(); print("print #"); S_linha(); break;
+    case PRINT : casa( PRINT ); E(); print("print #"); casa(';'); S_linha(); break;
     case ID : A(); S_linha(); break;
   }
 }
@@ -81,12 +84,15 @@ void A() {
   E();
   casa(';');
   print("=");
-  if(token != 0) print("^");
+  print("^");
 }
 
 void E() {
-  T();
-  E_linha();
+  switch( token ) {
+    case '-' : casa('-'); print("0"); T(); print("-"); E_linha(); break;
+    case '+' : casa('+'); T(); E_linha(); break;
+    default: T(); E_linha();
+  }
 }
 
 void E_linha() {
@@ -97,7 +103,7 @@ void E_linha() {
 }
 
 void T() {
-  F();
+  P();
   T_linha();
 }
 
@@ -110,13 +116,20 @@ void T_linha() {
 
 
 void P() {
-  F();
+  X();
   W();
 }
 
 void W() {
-  switch( token ) {
-    case '^' : casa( '^' ); P(); print("^"); break;
+  switch ( token ) {
+    case '^' : casa( '^' ); P(); print("power"); print("#"); break;
+  }
+}
+
+void X(){
+  F();
+  if(token == '!') {
+    casa('!'); print("fat #");
   }
 }
 
@@ -136,10 +149,9 @@ void F() {
       string temp = lexema;
       casa( STRING ); print(temp); }
       break;
+    case MAX : casa( MAX ); casa('('); E(); casa(','); E(); casa(')'); print("max #"); S_linha(); break;
     case '(': 
       casa( '(' ); E(); casa( ')' ); break;
-   case '-': 
-     casa('-'); print("0"); F(); print("-"); break;
     default:
       cout << "errou" << endl; exit(1);
   }
