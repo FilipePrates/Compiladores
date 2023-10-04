@@ -9,7 +9,7 @@
 using namespace std;
 int token;
 string lexema;
-enum TOKEN { ID = 256, NUM, STRING, PRINT, MAX, NEGNUM, POSNUM};
+enum TOKEN { ID = 256, NUM, STRING, PRINT, MAX, NEGNUM, POSNUM, DTOS, MDC};
 
 %}
 
@@ -19,6 +19,8 @@ LETRA	[A-Za-z_]
 
 PRINT [Pp][Rr][Ii][Nn][Tt]
 MAX [Mm][Aa][Xx]
+DTOS [Dd][Tt][Oo][Ss]
+MDC [Mm][Dd][Cc]
 NUM	{DIGITO}+("."{DIGITO}+)?
 ID	{LETRA}({LETRA}|{DIGITO})*
 STRING \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
@@ -30,6 +32,8 @@ STRING \"([^\"\n\\]|(\\\")|\"\"|"\\\\")+\"
 {NUM} 		{ lexema = yytext; return NUM; }
 {PRINT}     { lexema = yytext; return PRINT; }
 {MAX}    { lexema = yytext; return MAX; }
+{DTOS} { lexema = yytext; return DTOS; }
+{MDC} { lexema = yytext; return MDC; }
 {ID}		{ lexema = yytext; return ID; }
 .		    { lexema = yytext; return yytext[0]; }
 %%
@@ -150,6 +154,8 @@ void F() {
       casa( STRING ); print(temp); }
       break;
     case MAX : casa( MAX ); casa('('); E(); casa(','); E(); casa(')'); print("max #"); S_linha(); break;
+    case DTOS: casa( DTOS ); casa('('); E(); casa(')'); print("dtos #"); S_linha(); break;
+    case MDC: casa( MDC ); casa('('); E(); casa(','); E(); casa(')'); print("mdc #"); S_linha(); break;
     case '(': 
       casa( '(' ); E(); casa( ')' ); break;
     default:
