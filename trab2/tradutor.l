@@ -43,7 +43,7 @@ void T_linha();
 void F();
 void P();
 void W();
-void X();
+void Fat();
 
 void casa(int esperado) {
 	if (token == esperado){
@@ -116,17 +116,17 @@ void T_linha() {
 
 
 void P() {
-  X();
+  Fat();
   W();
 }
 
 void W() {
   switch ( token ) {
-    case '^' : casa( '^' ); P(); print("power"); print("#"); break;
+    case '^' : casa( '^' ); P(); print("power #"); break;
   }
 }
 
-void X(){
+void Fat(){
   F();
   if(token == '!') {
     casa('!'); print("fat #");
